@@ -1,0 +1,52 @@
+@startuml context
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Container.puml
+skinparam handwritten true
+LAYOUT_TOP_DOWN
+LAYOUT_WITH_LEGEND()
+
+Person(operator, "Operator")
+' Person(phone_operator, "Phone operator")
+' Person(xls_operator, "Excel operator")
+' Person(receptionist, "Receptionist")
+' Person(manager, "On-site Manager")
+Person_Ext(admin, "Remote Admin")
+Person(owner, "Owner")
+Person_Ext(client, "Client")
+
+System(existing_syst, "Existing processing system")
+' System_Ext(existing_vendors, "Existing vendors")
+
+' Person_Ext(buyer, "Ancillary goods Buyer")
+' Person_Ext(seller, "Ancillary goods Seller")
+
+client --> operator: phone call
+client --> operator: personal visit
+operator --> existing_syst: filled in Excel document
+' existing_syst <--> existing_vendors
+existing_syst <-- admin: data management
+existing_syst --> owner: analytics, accounting
+
+@enduml
+
+@startuml components
+skinparam handwritten true
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4.puml
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Component.puml
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Container.puml
+
+LAYOUT_TOP_DOWN
+LAYOUT_WITH_LEGEND()
+
+Person(operator, "Operator", "desktop OS, web browser, Excel")
+Person(owner, "Business Owner", "desktop OS, web browser, Excel")
+Person_Ext(admin, "Remote Admin")
+Component(tools, "Remote Admin Tools", "shared folder accessible over the web, scripts, data curation tools, admin web page, etc.")
+ComponentDb(raw_db, "Data Storage/Shared folder", "client base, visits, season tickets, DR etc.")
+
+admin --> tools: manages
+operator --> tools: uses
+owner --> tools: uses
+admin --> raw_db: manages
+tools <--> raw_db
+
+@enduml

@@ -1,0 +1,71 @@
+@startuml context
+skinparam handwritten true
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Container.puml
+LAYOUT_TOP_DOWN
+LAYOUT_WITH_LEGEND()
+Person(operator, "Operator")
+' Person(phone_operator, "Phone operator")
+' Person(xls_operator, "Excel operator")
+' Person(receptionist, "Receptionist")
+' Person(manager, "On-site Manager")
+Person(admin, "IT Support")
+Person(marketing_manager, "Marketing Manager")
+Person(owner, "Owner")
+Person_Ext(client, "Client")
+
+System_Ext(voip, "VoIP vendor")
+System(target_proc_syst, "Target processing system")
+System(target_marketing_syst, "Target marketing system")
+System_Ext(target_vendors, "Target vendors")
+
+Person_Ext(buyer, "Ancillary goods Buyer")
+Person_Ext(seller, "Ancillary goods Seller")
+
+client --> voip: phone call
+voip ..> operator
+client --> operator: personal visit
+voip ..>  target_proc_syst
+client --> target_proc_syst: web-site/mobile app
+operator --> target_proc_syst: better entry UX and/or old Excel approach
+target_proc_syst <--> target_vendors
+target_proc_syst <--> target_marketing_syst
+target_marketing_syst <--> target_vendors
+target_proc_syst <-- admin: data management
+target_proc_syst --> owner: analytics, accounting
+target_marketing_syst <-- admin: data management
+target_marketing_syst <--> marketing_manager: analytics, campaigns planning
+target_marketing_syst --> owner: analytics, accounting
+
+buyer <--> target_marketing_syst
+seller <--> target_marketing_syst
+
+@enduml
+
+@startuml components
+skinparam handwritten true
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4.puml
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Component.puml
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/release/1-0/C4_Container.puml
+
+LAYOUT_TOP_DOWN
+LAYOUT_WITH_LEGEND()
+
+Person(ml_admin, "Data Analysts")
+Boundary(proc, "Processing") {
+    Component(crm, "CRM", "Salesforce?")
+    Component(proc_tools, "Internal Processing Tools", "scripts, data curation tools, website, etc.")
+}
+
+Boundary(market, "Marketing") {
+    Component(ecomm, "eCommerce", "Magento, Shopify")
+    Component(market_tools, "Internal Marketing Tools", "scripts, data curation tools, website, etc.")
+}
+
+System_Ext(vendors, "Vendors")
+ComponentDb(raw_db, "Data Lake/WH", "client base, visits, season tickets, DR etc.")
+
+proc <--> raw_db
+market <--> raw_db
+ml_admin <-- raw_db
+
+@enduml
