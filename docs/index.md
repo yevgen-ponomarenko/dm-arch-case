@@ -17,6 +17,6 @@ Life1 does not have any specific preferences in target technology, however, woul
 modern stack and proposed solution should be cost-efficient on connecting new clubs and operational 
 expenses
 
-# Contact points
+## Contact points
 - Life 1: Sergiy_Alpaev@epam.com, Oleksandr_Tonkov@epam.com
 - EPAM: Yevgen_Ponomarenko@epam.com

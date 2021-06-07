@@ -1,0 +1,6 @@
+{
+  "Life1ProposalStack": {
+    "bucketUri": "dm-assessment-life1-proposal-us-east-1.s3.amazonaws.com",
+    "cloudFrontDistribution": "d1vhh2p7rzzzgg.cloudfront.net"
+  }
+}

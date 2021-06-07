@@ -18,9 +18,6 @@ System(target_proc_syst, "Target processing system")
 System(target_marketing_syst, "Target marketing system")
 System_Ext(target_vendors, "Target vendors")
 
-Person_Ext(buyer, "Ancillary goods Buyer")
-Person_Ext(seller, "Ancillary goods Seller")
-
 client --> voip: phone call
 voip ..> operator
 client --> operator: personal visit
@@ -36,9 +33,6 @@ target_marketing_syst <-- admin: data management
 target_marketing_syst <--> marketing_manager: analytics, campaigns planning
 target_marketing_syst --> owner: analytics, accounting
 
-buyer <--> target_marketing_syst
-seller <--> target_marketing_syst
-
 @enduml
 
 @startuml components
@@ -51,21 +45,26 @@ LAYOUT_TOP_DOWN
 LAYOUT_WITH_LEGEND()
 
 Person(ml_admin, "Data Analysts")
-Boundary(proc, "Processing") {
-    Component(crm, "CRM", "Salesforce?")
+Person(operator, "Operator")
+Person(owner, "Owner")
+
+Boundary(proc, "Fitness centers management") {
+    Component(mgmt_sys, "Multi-regional web solution", "AWS hosted site")  
     Component(proc_tools, "Internal Processing Tools", "scripts, data curation tools, website, etc.")
 }
 
-Boundary(market, "Marketing") {
-    Component(ecomm, "eCommerce", "Magento, Shopify")
+Boundary(market, "Market Intelligence") {
+    Component(crm, "CRM", "Salesforce, Pipedrive")
     Component(market_tools, "Internal Marketing Tools", "scripts, data curation tools, website, etc.")
 }
 
-System_Ext(vendors, "Vendors")
 ComponentDb(raw_db, "Data Lake/WH", "client base, visits, season tickets, DR etc.")
 
 proc <--> raw_db
 market <--> raw_db
 ml_admin <-- raw_db
+owner --> mgmt_sys: manages, gets operational metrics
+owner --> crm: manages, gets marketing metrics
+operator --> mgmt_sys: uses
 
 @enduml
