@@ -48,14 +48,18 @@ Person(ml_admin, "Data Analysts")
 Person(operator, "Operator")
 Person(owner, "Owner")
 
-Boundary(proc, "Fitness centers management") {
-    Component(mgmt_sys, "Multi-regional web solution", "AWS hosted site")  
-    Component(proc_tools, "Internal Processing Tools", "scripts, data curation tools, website, etc.")
+Boundary(cycle1, "Cycle-1") {
+    Boundary(proc, "Fitness centers management") {
+        Component(mgmt_sys, "Multi-regional web solution", "AWS hosted site")  
+        Component(proc_tools, "Internal Processing Tools", "scripts, data curation tools, website, etc.")
+    }
 }
 
-Boundary(market, "Market Intelligence") {
-    Component(crm, "CRM", "Salesforce, Pipedrive")
-    Component(market_tools, "Internal Marketing Tools", "scripts, data curation tools, website, etc.")
+Boundary(cycle2, "Cycle-2") {
+    Boundary(market, "Market Intelligence") {
+        Component(crm, "CRM", "Salesforce, Pipedrive")
+        Component(market_tools, "Internal Marketing Tools", "scripts, data curation tools, website, etc.")
+    }
 }
 
 ComponentDb(raw_db, "Data Lake/WH", "client base, visits, season tickets, DR etc.")

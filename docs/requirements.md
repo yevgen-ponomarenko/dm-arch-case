@@ -1,3 +1,13 @@
+## Assumptions
+- procurement of goods is out of scope
+- no existing CRM
+- no existing Identities Acceess Management process
+- one-stop shop solutions similar to [https://www.exercise.com/](https://www.exercise.com/) assessed but doesn't fit to certain business criteria
+## Constraints
+- avoid using of Microsoft Products
+## Existing Dependencies/Integration points
+- Existing datacenter shared folder managed by 3rd party admin
+## Questions
 ### Business
 - market research results regarding what premium experience visiting fitness centers around the World mean - are any business consulting/analysis results exist or to be in scope of this engagement
 _A: Have a vision, business plan, KPIs_

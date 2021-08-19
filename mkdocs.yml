@@ -2,9 +2,9 @@ site_name: Life1 expansion use-case
 nav:
     - Home: index.md
     - Requirements analysis: requirements.md
-    - Scope: scope.md
     - Current System Architecture: current_system.md
     - Target System Architecture: target_system.md
+    - Delivery: delivery.md
     - About: about.md
 theme:
     name: material

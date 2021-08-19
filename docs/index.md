@@ -18,5 +18,5 @@ modern stack and proposed solution should be cost-efficient on connecting new cl
 expenses
 
 ## Contact points
-- Life 1: Sergiy_Alpaev@epam.com, Oleksandr_Tonkov@epam.com
-- EPAM: Yevgen_Ponomarenko@epam.com
+- Life 1: [Sergiy_Alpaev@epam.com](mailto://Sergiy_Alpaev@epam.com), [Oleksandr_Tonkov@epam.com](mailto://Oleksandr_Tonkov@epam.com)
+- EPAM: [Yevgen_Ponomarenko@epam.com](mailto://Yevgen_Ponomarenko@epam.com)
